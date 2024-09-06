@@ -33,6 +33,8 @@ class CapsAndCorners(GeneralPlugin):
 	@objc.python_method
 	def start(self):
 		newMenuItem = NSMenuItem(self.name, self.showWindow_)
+		if newMenuItem.target() is None:
+			newMenuItem.setTarget_(self)
 		Glyphs.menu[WINDOW_MENU].append(newMenuItem)
 
 	def showWindow_(self, sender):
