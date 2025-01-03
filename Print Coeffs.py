@@ -3,12 +3,12 @@
 
 # by Tim Ahrens
 # http://justanotherfoundry.com
-# https://github.com/justanotherfoundry/glyphsapp-scripts
+# https://github.com/justanotherfoundry/freemix-glyphsapp
 
 from __future__ import division, print_function, unicode_literals
 
 __doc__='''
-Prints the interpolation coefficients for each master in all instances.
+Prints the interpolation coefficients for each master in all instances (make sure the Macro Panel is open).
 '''
 
 import re

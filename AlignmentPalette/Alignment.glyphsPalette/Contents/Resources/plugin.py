@@ -53,8 +53,9 @@ class AlignmentPalette (PalettePlugin):
 	# returns the center of the bounding box of a layer
 	@objc.python_method
 	def centerOfLayer( self, layer ):
-		if len(layer.shapes) == 0:
-			return None, None
+		if Glyphs.versionNumber >= 3:
+			if len(layer.shapes) == 0:
+				return None, None
 		bounds = layer.bounds
 		centerX = NSMidX( bounds )
 		centerY = NSMidY( bounds )
@@ -84,8 +85,13 @@ class AlignmentPalette (PalettePlugin):
 	def namedZones( self, layer ):
 		metrics = None
 		try:
-			# Glyphs 3
 			metrics = layer.metrics
+			# ^ this is a new Glyphs 3 thing.
+			#   not sure how to use it but sometimes it seems to return
+			#   an objc.native_selector object rather than something iterable.
+			#   maybe we need try calling layer.metrics() in addition?
+			#
+			#   so let’s better keep this inside the try block as well:
 			if metrics is not None:
 				zones = []
 				for metric in metrics:
@@ -93,8 +99,7 @@ class AlignmentPalette (PalettePlugin):
 				return zones
 		except:
 			pass
-
-		# Fallback for Glyphs 2
+		
 		glyph = layer.parent
 		if not glyph:
 			return []

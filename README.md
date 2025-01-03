@@ -14,6 +14,23 @@ To install Freemix in Glyphs,
 
 See also: [Font Remix Tools for Glyphs](http://remix-tools.com/glyphsapp), [Kern On for Glyphs](http://kern-on.com), [Just Another Foundry](http://justanotherfoundry.com/)
 
+
+### Adopt Background
+
+The selected nodes will adopt the position of the corresponding nodes in the background.
+
+This is one of the simplest but probably the most powerful of my scripts. In combination with Insert Glyph to Background, you can easily transfer parts of the outlines between glyphs.
+
+Tip: Give it a keyboard shortcut if you use it a lot!
+
+
+### Adopt from Other Font
+
+Adopts glyph properties from the same-named glyph(s) in a different font.
+
+<img src="https://raw.githubusercontent.com/justanotherfoundry/freemix-glyphsapp/master/img/AdoptFromOtherFont.png" width="320" />
+
+
 ### Alignment Palette
 
 The palette shows the position of the center of the glphs’s bounding box. This works with components, with multiple glyphs selected and is also editable. Useful for centering all case-sensitive punctuation vertically, or to check whether mathematical operands are on the same x position (use Glyphs’ built-in glyph info to check whether they have the same advance width).
@@ -39,13 +56,42 @@ To show this, use Window -> Caps and Corners. This window shows the cap and corn
 
 <img src="https://raw.githubusercontent.com/justanotherfoundry/freemix-glyphsapp/master/CapsAndCorners/CapsAndCorners.png" width="320" />
 
-### Suffixes Palette
 
-The palette shows the name(s) of the selected glyph(s), split by suffix. The fields are editable.
+### Delete All Anchors
 
-This is useful for quickly changing the suffix of multiple glyphs at once.
+Removes all anchors from the selected glyphs.
 
-<img src="https://raw.githubusercontent.com/justanotherfoundry/freemix-glyphsapp/master/SuffixesPalette/SuffixesPalette.png" width="160" />
+
+### Delete Zero-Thickness Hints
+
+Removes all zero-thickness hints from all glyphs in the font.
+
+
+### Delete BCP
+
+This literally deletes individual BCPs: If you delete one of the two BCPs in a cubic curve then it becomes quadratic.
+
+If the deleted BCP was retracted (i.e. on the node) then the other handle length is adjusted to better retain the shape.
+
+
+### Edit Next Glyph/ Previous Glyph
+
+Activates the next/ previous glyph in the tab for editing. Makes most sense if you give it a keyboard shortcut in the macOS system preferences.
+
+
+### Expand Kerning
+
+Expand Kerning like we know it from FontLab.
+
+
+### Font Book Checker
+
+Outputs information on the supported languages as per Font Book on macOS (make sure the Macro Panel is open).
+
+
+### Glyphset Diff
+
+Shows the glyphs that are not present in the other font (exactly two fonts need to be open).
 
 
 ### Insert Glyph to Background
@@ -68,17 +114,14 @@ This is one of the most powerful scripts in this collection. I highly recommend 
 Same as “Insert Glyph to Background” but the glyph is inserted into the active (foreground) layer, not in the background
 
 
-### Mask to Master
+### Jump to Alternate
 
-Simulates the good ol' Mask to Master function we know from FontLab
-(i.e. replaces the current outline with the background).
+In the edit view, use this script to “jump” back and forth (or to circle) between alternate glyphs such as one, one.lf and one.tosf.
+If several glyphs are selected you can choose to add or remove suffixes.
 
-You can give it the familiar Cmd+J shortcut via App Shortcuts
-in the Mac OS System Preferences.
+### Make Backup Layer
 
-The main improvement is that it is appplied only to the selection.
-In combination with Insert Glyph to Background, you can easily
-transfer parts of the outline between glyphs.
+Same as the “Copy” button on the Layers palette but as a script. Because I really want a keyboard shortcut for this. Without a keyboard shortcut this script is completely useless. Sorry.
 
 
 ### Paste Background
@@ -89,53 +132,14 @@ Former FontLab users can give it the familiar Cmd+L shortcut via App Shortcuts
 in the Mac OS System Preferences.
 
 
-### Edit Next Glyph/ Previous Glyph
+### Print Coeffs
 
-Activates the next/ previous glyph in the tab for editing. Makes most sense if you give it a keyboard shortcut in the macOS system preferences.
-
-
-### Toggle Backup Layer
-
-- This script toggles between the master layer and the last backup layer in the list.
-
-- Given a keyboard shortcut, this is useful for quickly comparing two versions of a glyph.
-
-
-### Jump to Alternate
-
-In the edit view, use this script to “jump” back and forth (or to circle) between alternate glyphs such as one, one.lf and one.tosf.
-
-
-### Make Backup Layer
-
-Same as the “Copy” button on the Layers palette but as a script. Because I really want a keyboard shortcut for this. Without a keyboard shortcut this script is completely useless. Sorry.
+Prints the interpolation coefficients for each master in all instances (make sure the Macro Panel is open).
 
 
 ### Remove Backup Layers
 
 Removes all backup layers (i.e. those created using the "Copy" button) from the selected glyphs.
-
-
-### Symmetrify
-
-Symmetrifies the glyph shape.
-
-S - creates point reflection (rotational symmetry)
-
-T - creates horizontal reflection symmetry
-
-C - creates vertical reflection symmetry
-
-H - creates 2-axis symmetry (ie. all the above)
-
-* - creates 5-fold rotational symmetry, useful for asterisks (note that this automatically also applies horizontal reflection symmetry)
-
-The buttons are available only as far as the node structure allows.
-
-
-### Print Coeffs
-
-Prints the interpolation coefficients for each master in all instances.
 
 
 ### Round Kerning
@@ -159,23 +163,34 @@ i.e. are not accessible in the final font.
 These glyphs can usually be excluded from the final exported OTF font.
 
 
-### Round Kerning
+### Suffixes Palette
 
-- Rounds the kerning values to full integer numbers.
-- In addition, values smaller than MIN_VALUE are erased.
+The palette shows the name(s) of the selected glyph(s), split by suffix. The fields are editable.
 
+This is useful for quickly changing the suffix of multiple glyphs at once.
 
-### Expand Kerning
-
-Expand Kerning like we know it from FontLab.
+<img src="https://raw.githubusercontent.com/justanotherfoundry/freemix-glyphsapp/master/SuffixesPalette/SuffixesPalette.png" width="160" />
 
 
-### Delete All Hints
+### Symmetrify
 
-Removes all hints from the selected glyphs.
-(Note: In Glyphs 3, this functionality is built in: In the Font View select the glyphs, right-click and hold ⌥.)
+Symmetrifies the glyph shape.
+
+S - creates point reflection (rotational symmetry)
+
+T - creates horizontal reflection symmetry
+
+C - creates vertical reflection symmetry
+
+H - creates 2-axis symmetry (ie. all the above)
+
+* - creates 5-fold rotational symmetry, useful for asterisks (note that this automatically also applies horizontal reflection symmetry)
+
+The buttons are available only as far as the node structure allows.
 
 
-### Delete Zero-Thickness Hints
+### Toggle Backup Layer
 
-Removes all zero-thickness hints from all glyphs in the font.
+- This script toggles between the master layer and the last backup layer in the list.
+
+- Given a keyboard shortcut, this is useful for quickly comparing two versions of a glyph.
